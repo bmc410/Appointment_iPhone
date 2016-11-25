@@ -8,6 +8,20 @@
 
 import UIKit
 
+
+    
+extension Date {
+
+    static public func <(a: Date, b: Date) -> Bool {
+        return a.compare(b) == ComparisonResult.orderedAscending
+    }
+    
+    static public func ==(a: Date, b: Date) -> Bool {
+        return a.compare(b) == ComparisonResult.orderedSame
+    }
+
+}
+
 extension UIColor {
     
     convenience init(hex:Int, alpha:CGFloat = 1.0) {

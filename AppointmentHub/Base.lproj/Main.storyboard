@@ -160,7 +160,7 @@
         <!--Data Source-->
         <scene sceneID="2pq-l2-rp0">
             <objects>
-                <viewController id="0uq-c3-FNi" customClass="ViewController" customModule="AppointmentHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0uq-c3-FNi" customClass="AppointmentController" customModule="AppointmentHub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gVj-Ky-XNV"/>
                         <viewControllerLayoutGuide type="bottom" id="Zcl-nY-uXA"/>
@@ -186,13 +186,30 @@
                                 <rect key="frame" x="0.0" y="372" width="375" height="246"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wzT-9g-hs1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="wzT-9g-hs1" customClass="MyCustomCell" customModule="AppointmentHub" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzT-9g-hs1" id="h5U-dr-aTJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVH-TD-4cA">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EVH-TD-4cA" firstAttribute="top" secondItem="h5U-dr-aTJ" secondAttribute="topMargin" constant="3" id="ObQ-Zp-Jzn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EVH-TD-4cA" secondAttribute="bottom" constant="3" id="TO4-5j-rhN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="EVH-TD-4cA" secondAttribute="trailing" constant="5" id="Tw6-Eq-hl5"/>
+                                                <constraint firstItem="EVH-TD-4cA" firstAttribute="leading" secondItem="h5U-dr-aTJ" secondAttribute="leadingMargin" constant="5" id="Wyo-Gx-63S"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ApptTimeLabel" destination="EVH-TD-4cA" id="bg8-Vw-oDu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -209,13 +226,121 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ApptTable" destination="NfK-eD-ZiE" id="Xof-wt-6jJ"/>
                         <outlet property="FSCalendar" destination="ZbE-QO-0EC" id="GdK-v4-gTA"/>
                         <outlet property="FSHeightConstraint" destination="XKA-OF-Xax" id="gCy-0d-2Zz"/>
+                        <segue destination="Guq-So-tsx" kind="show" identifier="ShowApptScheduler" id="rqj-kj-jhc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXX-76-jH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448.8000000000002" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="2425" y="-324"/>
+        </scene>
+        <!--Schedule Appt View-->
+        <scene sceneID="JuT-14-NG3">
+            <objects>
+                <viewController id="Guq-So-tsx" customClass="ScheduleApptView" customModule="AppointmentHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="APc-cR-R4A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gek-pY-Kg6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iJX-M3-biH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaM-sP-Mu4">
+                                <rect key="frame" x="26" y="84" width="323" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-RX-YZE">
+                                <rect key="frame" x="26" y="164" width="323" height="296"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKq-Uk-fJU" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="39"/>
+                                        <nil key="textColor"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="First Name"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="npv-1l-qUY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="64" width="323" height="39.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Last Name"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="12Q-vE-2In" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="128.5" width="323" height="39"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3bf-43-cb0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="192.5" width="323" height="39.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Phone Number"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USe-Wn-Tiu">
+                                        <rect key="frame" x="0.0" y="257" width="323" height="39"/>
+                                        <color key="backgroundColor" red="1" green="0.83573911224004294" blue="0.26433401298673664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Schedule Appointment"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ScheduleAppointment:" destination="Guq-So-tsx" eventType="touchUpInside" id="SQ6-27-2bm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="USe-Wn-Tiu" secondAttribute="trailing" id="2ak-wq-Xha"/>
+                                    <constraint firstAttribute="trailing" secondItem="CKq-Uk-fJU" secondAttribute="trailing" id="9Ze-hY-jMl"/>
+                                    <constraint firstItem="npv-1l-qUY" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="IoI-GE-2T4"/>
+                                    <constraint firstItem="CKq-Uk-fJU" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="OE9-gx-oPz"/>
+                                    <constraint firstAttribute="trailing" secondItem="12Q-vE-2In" secondAttribute="trailing" id="PRe-9i-1te"/>
+                                    <constraint firstAttribute="trailing" secondItem="3bf-43-cb0" secondAttribute="trailing" id="QTT-kI-Xys"/>
+                                    <constraint firstItem="12Q-vE-2In" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="bkT-ly-jTO"/>
+                                    <constraint firstItem="3bf-43-cb0" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="ltr-qe-Ehf"/>
+                                    <constraint firstItem="USe-Wn-Tiu" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="qVA-y6-FSC"/>
+                                    <constraint firstAttribute="trailing" secondItem="npv-1l-qUY" secondAttribute="trailing" id="wDl-hB-yzg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sHA-RX-YZE" firstAttribute="leading" secondItem="iJX-M3-biH" secondAttribute="leadingMargin" constant="10" id="D2D-4z-SXC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sHA-RX-YZE" secondAttribute="trailing" constant="10" id="LFZ-zM-VFN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GaM-sP-Mu4" secondAttribute="trailing" constant="10" id="Nxr-n6-wiv"/>
+                            <constraint firstItem="GaM-sP-Mu4" firstAttribute="top" secondItem="APc-cR-R4A" secondAttribute="bottom" constant="20" id="QqK-L8-ali"/>
+                            <constraint firstItem="sHA-RX-YZE" firstAttribute="top" secondItem="APc-cR-R4A" secondAttribute="bottom" constant="100" id="UZn-Hh-Rcu"/>
+                            <constraint firstItem="GaM-sP-Mu4" firstAttribute="leading" secondItem="iJX-M3-biH" secondAttribute="leadingMargin" constant="10" id="XCU-3a-P6o"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DateTimeLabel" destination="GaM-sP-Mu4" id="rTQ-Q8-6iE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LEC-8A-nae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3265" y="-324"/>
         </scene>
         <!--Infomation-->
         <scene sceneID="wg7-f3-ORb">

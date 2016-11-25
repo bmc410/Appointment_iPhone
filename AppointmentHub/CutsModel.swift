@@ -9,8 +9,9 @@
 import Foundation
 
 class CutsModel{
+    var CutTypeID:Int?
     var CutName:String?
     var CutDetail:String?
-    var CutPrice:Int?
+    var CutPrice:Double?
     var CutTime:Int?
 }

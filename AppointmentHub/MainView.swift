@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ObjectMapper
+import Alamofire
+import AlamofireObjectMapper
 
 class ScheduleCuts : UITableViewCell {
    
@@ -21,32 +24,53 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var CutsTable: UITableView!
     var cuts = [CutsModel]()
+    var duration:Int?
+    var ApptTypes: [ApptType]?
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // get a reference to the second view controller
+        let secondViewController = segue.destination as! AppointmentController
+        secondViewController.Duration = duration
+        
+        
+    }
+
+    func GetApptTypes(){
+        let text = "Please wait..."
+        self.showWaitOverlayWithText((text as NSString) as String)
+        
+        
+        let url = "http://appointmentslotsapi.azurewebsites.net/api/Appointment/GetApptTypes"
+        
+        let obj = RestAPI()
+        obj.GetAPI(url) { response in
+            self.ApptTypes = Mapper<ApptType>().mapArray(JSONString: response.rawString()!)
+            
+            for a in self.ApptTypes!{
+                let c = CutsModel()
+                c.CutName = a.ApptType
+                c.CutDetail = a.ApptDescription
+                c.CutPrice = a.ApptPrice
+                c.CutTime = a.ApptLength
+                c.CutTypeID = a.ApptTypeID
+                self.cuts.append(c)
+            }
+            self.CutsTable.reloadData()
+            
+            self.removeAllOverlays()
+            SwiftOverlays.removeAllBlockingOverlays()
+            
+            MYWSCache.sharedInstance.setObject(self.ApptTypes as AnyObject, forKey: "ApptTypes" as AnyObject)
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationController?.isNavigationBarHidden = true
-        //self.navigationItem.title = "Seven Zero One Salon"
-        
-        let c0 = CutsModel()
-        c0.CutName = "Mens Quick Cut"
-        c0.CutDetail = "Quick trim and shape to keep that recent haircut looking great."
-        c0.CutPrice = 12
-        cuts.append(c0)
-
-        
-        let c = CutsModel()
-        c.CutName = "Mens Basic Cut"
-        c.CutDetail = "Haircut and style to create the perfect look for you."
-        c.CutPrice = 16
-        cuts.append(c)
-        
-        let c1 = CutsModel()
-        c1.CutName = "Mens Premium Cut"
-        c1.CutDetail = "Haircut, shampoo, beard trim and style for the men in the family."
-        c1.CutPrice = 23
-        cuts.append(c1)
+        GetApptTypes()
         
         CutsTable.dataSource = self
         CutsTable.delegate = self
@@ -74,6 +98,7 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        duration = cuts[indexPath.row].CutTime
         //selectedItem = self.refillHist![(indexPath as NSIndexPath).row] as RefillHistory
         //self.performSegue(withIdentifier: "SlotsDetail", sender: nil)
         

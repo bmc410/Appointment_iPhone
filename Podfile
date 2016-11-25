@@ -8,5 +8,7 @@ target 'AppointmentHub' do
     pod 'Alamofire', '~> 4.0'
     pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
     pod 'AlamofireObjectMapper', '~> 4.0'
+    pod 'SwiftyJSON', '3.0.0'
+    pod 'SkyFloatingLabelTextField', git: "https://github.com/MLSDev/SkyFloatingLabelTextField.git", branch: "swift3"
 end
 

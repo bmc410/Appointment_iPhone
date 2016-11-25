@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021202521DE8F8B100FE3574 /* ApptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021202511DE8F8B100FE3574 /* ApptType.swift */; };
 		021A55291DDBF81E00251AEE /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55041DDBF81E00251AEE /* FSCalendar.m */; };
 		021A552A1DDBF81E00251AEE /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55051DDBF81E00251AEE /* FSCalendar+Deprecated.m */; };
 		021A552B1DDBF81E00251AEE /* FSCalendarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55071DDBF81E00251AEE /* FSCalendarAnimator.m */; };
@@ -22,12 +23,16 @@
 		021A55351DDBF81E00251AEE /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A551C1DDBF81E00251AEE /* FSCalendarScopeHandle.m */; };
 		021A55361DDBF81E00251AEE /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A551E1DDBF81E00251AEE /* FSCalendarStickyHeader.m */; };
 		021A55371DDBF81E00251AEE /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55201DDBF81E00251AEE /* FSCalendarWeekdayView.m */; };
-		021A55381DDBF81E00251AEE /* FSCalendar.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 021A55221DDBF81E00251AEE /* FSCalendar.xcconfig */; };
 		021A55391DDBF81E00251AEE /* FSCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55231DDBF81E00251AEE /* FSCalendar-dummy.m */; };
 		021A553A1DDBF81E00251AEE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 021A55261DDBF81E00251AEE /* Info.plist */; };
 		021D17B51DDAABAF00C786F2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 021D17B41DDAABAF00C786F2 /* Podfile */; };
+		024DF32F1DE6130600651127 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF32E1DE6130600651127 /* RestAPI.swift */; };
+		024DF3311DE6169B00651127 /* ApptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF3301DE6169B00651127 /* ApptModel.swift */; };
+		02AE68E31DE66C47002DB5D2 /* AppointmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */; };
+		02AE68E51DE66E7E002DB5D2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E41DE66E7E002DB5D2 /* Common.swift */; };
+		02AE68E71DE67474002DB5D2 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E61DE67474002DB5D2 /* JSONSerializer.swift */; };
 		02B2A2DE1DD22AC900491B14 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */; };
-		02B40F301DD13B88001E3AE3 /* CollapsibleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2D1DD13B88001E3AE3 /* CollapsibleTableViewController.swift */; };
+		02B40F301DD13B88001E3AE3 /* AppointmentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2D1DD13B88001E3AE3 /* AppointmentsController.swift */; };
 		02B40F311DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */; };
 		02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2F1DD13B88001E3AE3 /* Extensions.swift */; };
 		02B9C50D1DD0C6F600582041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C50C1DD0C6F600582041 /* AppDelegate.swift */; };
@@ -35,13 +40,17 @@
 		02B9C5161DD0C6F600582041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9C5151DD0C6F600582041 /* Assets.xcassets */; };
 		02B9C5191DD0C6F600582041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9C5171DD0C6F600582041 /* LaunchScreen.storyboard */; };
 		02B9C5211DD0D8B800582041 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5201DD0D8B800582041 /* CardView.swift */; };
-		02B9C5231DD0DA2400582041 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5221DD0DA2400582041 /* ScheduleController.swift */; };
+		02B9C5231DD0DA2400582041 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5221DD0DA2400582041 /* MainView.swift */; };
 		02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5251DD0DEF200582041 /* CutsModel.swift */; };
+		02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */; };
+		02CEEBFA1DE25E7F006F4D5C /* ScheduleApptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */; };
+		02F838A41DE61C3D008D13D5 /* MYWSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A31DE61C3D008D13D5 /* MYWSCache.swift */; };
+		02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */; };
 		C4DEB91C1312DD6FCE1B45CF /* Pods_AppointmentHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		021A55021DDBF53700251AEE /* Objc-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objc-Bridge-Header.h"; sourceTree = "<group>"; };
+		021202511DE8F8B100FE3574 /* ApptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptType.swift; sourceTree = "<group>"; };
 		021A55031DDBF81E00251AEE /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
 		021A55041DDBF81E00251AEE /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendar.m; path = FSCalendar/FSCalendar.m; sourceTree = "<group>"; };
 		021A55051DDBF81E00251AEE /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FSCalendar+Deprecated.m"; path = "FSCalendar/FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -79,8 +88,13 @@
 		021A55251DDBF81E00251AEE /* FSCalendar-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSCalendar-umbrella.h"; sourceTree = "<group>"; };
 		021A55261DDBF81E00251AEE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021D17B41DDAABAF00C786F2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		024DF32E1DE6130600651127 /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		024DF3301DE6169B00651127 /* ApptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptModel.swift; sourceTree = "<group>"; };
+		02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentRequest.swift; sourceTree = "<group>"; };
+		02AE68E41DE66E7E002DB5D2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		02AE68E61DE67474002DB5D2 /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
 		02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
-		02B40F2D1DD13B88001E3AE3 /* CollapsibleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewController.swift; sourceTree = "<group>"; };
+		02B40F2D1DD13B88001E3AE3 /* AppointmentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsController.swift; sourceTree = "<group>"; };
 		02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		02B40F2F1DD13B88001E3AE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		02B9C5091DD0C6F600582041 /* AppointmentHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppointmentHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +104,12 @@
 		02B9C5181DD0C6F600582041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02B9C51A1DD0C6F600582041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B9C5201DD0D8B800582041 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		02B9C5221DD0DA2400582041 /* ScheduleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
+		02B9C5221DD0DA2400582041 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		02B9C5251DD0DEF200582041 /* CutsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutsModel.swift; sourceTree = "<group>"; };
+		02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
+		02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleApptView.swift; sourceTree = "<group>"; };
+		02F838A31DE61C3D008D13D5 /* MYWSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYWSCache.swift; sourceTree = "<group>"; };
+		02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOverlays.swift; sourceTree = "<group>"; };
 		4FD795FCDB934C0B6ACA960E /* Pods-AppointmentHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppointmentHub/Pods-AppointmentHub.release.xcconfig"; sourceTree = "<group>"; };
 		8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppointmentHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DCF0DA5EDA1BA0829CD7E7 /* Pods-AppointmentHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppointmentHub/Pods-AppointmentHub.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,10 +180,46 @@
 			path = Pods/FSCalendar;
 			sourceTree = "<group>";
 		};
+		024DF32B1DE611AC00651127 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */,
+				02B9C5221DD0DA2400582041 /* MainView.swift */,
+				02B40F2D1DD13B88001E3AE3 /* AppointmentsController.swift */,
+				02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		024DF32C1DE6123D00651127 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */,
+				02B9C50C1DD0C6F600582041 /* AppDelegate.swift */,
+				02B9C51A1DD0C6F600582041 /* Info.plist */,
+				02B40F2F1DD13B88001E3AE3 /* Extensions.swift */,
+				02B9C5201DD0D8B800582041 /* CardView.swift */,
+				024DF32E1DE6130600651127 /* RestAPI.swift */,
+				02F838A31DE61C3D008D13D5 /* MYWSCache.swift */,
+				02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */,
+				02AE68E41DE66E7E002DB5D2 /* Common.swift */,
+				02AE68E61DE67474002DB5D2 /* JSONSerializer.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		024DF32D1DE6127000651127 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				02B9C5121DD0C6F600582041 /* Main.storyboard */,
+				02B9C5171DD0C6F600582041 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		02B9C5001DD0C6F600582041 = {
 			isa = PBXGroup;
 			children = (
-				021A55021DDBF53700251AEE /* Objc-Bridge-Header.h */,
 				021D17B41DDAABAF00C786F2 /* Podfile */,
 				021A55281DDBF81E00251AEE /* FSCalendar */,
 				02B9C50B1DD0C6F600582041 /* AppointmentHub */,
@@ -186,18 +240,11 @@
 		02B9C50B1DD0C6F600582041 /* AppointmentHub */ = {
 			isa = PBXGroup;
 			children = (
-				02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */,
+				024DF32D1DE6127000651127 /* Storyboards */,
+				024DF32C1DE6123D00651127 /* Common */,
 				02B9C5241DD0DECE00582041 /* Models */,
-				02B9C5201DD0D8B800582041 /* CardView.swift */,
-				02B9C50C1DD0C6F600582041 /* AppDelegate.swift */,
-				02B9C5121DD0C6F600582041 /* Main.storyboard */,
 				02B9C5151DD0C6F600582041 /* Assets.xcassets */,
-				02B9C5171DD0C6F600582041 /* LaunchScreen.storyboard */,
-				02B9C51A1DD0C6F600582041 /* Info.plist */,
-				02B9C5221DD0DA2400582041 /* ScheduleController.swift */,
-				02B40F2D1DD13B88001E3AE3 /* CollapsibleTableViewController.swift */,
-				02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */,
-				02B40F2F1DD13B88001E3AE3 /* Extensions.swift */,
+				024DF32B1DE611AC00651127 /* Controllers */,
 			);
 			path = AppointmentHub;
 			sourceTree = "<group>";
@@ -206,6 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				02B9C5251DD0DEF200582041 /* CutsModel.swift */,
+				02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */,
+				024DF3301DE6169B00651127 /* ApptModel.swift */,
+				02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */,
+				021202511DE8F8B100FE3574 /* ApptType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -257,7 +308,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "William McCoy";
 				TargetAttributes = {
 					02B9C5081DD0C6F600582041 = {
@@ -293,7 +344,6 @@
 				02B9C5191DD0C6F600582041 /* LaunchScreen.storyboard in Resources */,
 				02B9C5161DD0C6F600582041 /* Assets.xcassets in Resources */,
 				021A553A1DDBF81E00251AEE /* Info.plist in Resources */,
-				021A55381DDBF81E00251AEE /* FSCalendar.xcconfig in Resources */,
 				021D17B51DDAABAF00C786F2 /* Podfile in Resources */,
 				02B9C5141DD0C6F600582041 /* Main.storyboard in Resources */,
 			);
@@ -354,17 +404,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */,
 				021A552C1DDBF81E00251AEE /* FSCalendarAppearance.m in Sources */,
 				02B40F311DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift in Sources */,
 				021A55351DDBF81E00251AEE /* FSCalendarScopeHandle.m in Sources */,
+				024DF32F1DE6130600651127 /* RestAPI.swift in Sources */,
+				02AE68E31DE66C47002DB5D2 /* AppointmentRequest.swift in Sources */,
 				021A55311DDBF81E00251AEE /* FSCalendarConstants.m in Sources */,
 				021A55361DDBF81E00251AEE /* FSCalendarStickyHeader.m in Sources */,
 				021A552A1DDBF81E00251AEE /* FSCalendar+Deprecated.m in Sources */,
+				02CEEBFA1DE25E7F006F4D5C /* ScheduleApptView.swift in Sources */,
 				021A55371DDBF81E00251AEE /* FSCalendarWeekdayView.m in Sources */,
-				02B40F301DD13B88001E3AE3 /* CollapsibleTableViewController.swift in Sources */,
+				02B40F301DD13B88001E3AE3 /* AppointmentsController.swift in Sources */,
 				021A55291DDBF81E00251AEE /* FSCalendar.m in Sources */,
+				02AE68E71DE67474002DB5D2 /* JSONSerializer.swift in Sources */,
 				021A55391DDBF81E00251AEE /* FSCalendar-dummy.m in Sources */,
 				02B2A2DE1DD22AC900491B14 /* AKPickerView.swift in Sources */,
+				02F838A41DE61C3D008D13D5 /* MYWSCache.swift in Sources */,
+				02AE68E51DE66E7E002DB5D2 /* Common.swift in Sources */,
 				021A55301DDBF81E00251AEE /* FSCalendarCollectionViewLayout.m in Sources */,
 				021A552B1DDBF81E00251AEE /* FSCalendarAnimator.m in Sources */,
 				021A552F1DDBF81E00251AEE /* FSCalendarCollectionView.m in Sources */,
@@ -372,12 +429,15 @@
 				021A552E1DDBF81E00251AEE /* FSCalendarCell.m in Sources */,
 				021A55331DDBF81E00251AEE /* FSCalendarExtensions.m in Sources */,
 				021A55321DDBF81E00251AEE /* FSCalendarDelegateProxy.m in Sources */,
+				024DF3311DE6169B00651127 /* ApptModel.swift in Sources */,
 				02B9C50D1DD0C6F600582041 /* AppDelegate.swift in Sources */,
 				02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */,
 				021A55341DDBF81E00251AEE /* FSCalendarHeaderView.m in Sources */,
 				02B9C5211DD0D8B800582041 /* CardView.swift in Sources */,
+				021202521DE8F8B100FE3574 /* ApptType.swift in Sources */,
 				02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */,
-				02B9C5231DD0DA2400582041 /* ScheduleController.swift in Sources */,
+				02B9C5231DD0DA2400582041 /* MainView.swift in Sources */,
+				02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +481,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -471,6 +532,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -500,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 96DCF0DA5EDA1BA0829CD7E7 /* Pods-AppointmentHub.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZHVB59B7BD;
 				INFOPLIST_FILE = AppointmentHub/Info.plist;
@@ -517,6 +580,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FD795FCDB934C0B6ACA960E /* Pods-AppointmentHub.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZHVB59B7BD;
 				INFOPLIST_FILE = AppointmentHub/Info.plist;
