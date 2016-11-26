@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class ScheduleApptView: UIViewController {
     
     var selectedTime: String = ""
     var selectedDate: Date?
     var request:AppointmentRequest = AppointmentRequest()
+    var duration:Int?
+    var StartDateString: String?
+    var EndDateString:String?
+    var dFormatString = "MM/d/yyyy h:mm a"
+    
+    
+    @IBOutlet var FirstName: SkyFloatingLabelTextField!
+    @IBOutlet var LastName: SkyFloatingLabelTextField!
+    @IBOutlet var Email: SkyFloatingLabelTextField!
+    @IBOutlet var Phone: SkyFloatingLabelTextField!
+    
     
        
     @IBOutlet weak var DateTimeLabel: UILabel!
@@ -20,26 +32,51 @@ class ScheduleApptView: UIViewController {
         Schedule()
     }
     
+    
+    func FormatDateTimeString() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/d/yyyy"
+        let dateString = formatter.string(from: selectedDate!)
+        StartDateString = dateString + " " + selectedTime
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dFormatString
+        let startDate = dateFormatter.date(from: dateString)
+        let endDate = startDate?.add(minutes: 30)
+        
+        EndDateString = endDate?.ToString(format: dFormatString)
+        
+    }
+    
+    func backTwo() {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        
+    }
+    
     func PopController(alert: UIAlertAction!) {
-        //reload the previous view
-        _ = self.navigationController?.popViewController(animated: true)
+        backTwo()
     }
     
     private func Schedule(){
-        let url = "http://appointmentslotsapi.azurewebsites.net/api/Appointment/ScheduleAppointment"
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/ScheduleAppointment"
         var actions: [UIAlertAction] = [UIAlertAction]()
         actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: self.PopController))
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/d/yyyy hh:mm a"
+        dateFormatter.dateFormat = dFormatString
+        
+         _ = FormatDateTimeString()
+        
         
         request.AppointmentType = 1
-        request.StartDateTime = "12/3/2016 10:00 AM"
-        request.EndDateTime = "12/3/2016 10:30 AM"
-        request.FirstName = "Bill"
-        request.LastName = "McCoy"
-        request.Email = "bmc410@comcast.net"
-        request.Phone = "968-6075"
+        request.StartDateTime = StartDateString
+        request.EndDateTime = EndDateString
+        request.FirstName = FirstName.text
+        request.LastName = LastName.text
+        request.Email = Email.text
+        request.Phone = Phone.text
         
         let json = JSONSerializer.toJson(request)
         var apptPostData:NSDictionary = NSDictionary()
@@ -54,13 +91,15 @@ class ScheduleApptView: UIViewController {
         
         let obj = RestAPI()
         obj.PostAPI(url, postData: apptPostData) { response in
-            Common.ShowAlert(self, Message: "Submitted successfully. Please check back for a status update.", Actions: actions, Title: "")
+            Common.ShowAlert(self, Message: "Submitted successfully.", Actions: actions, Title: "")
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM d"

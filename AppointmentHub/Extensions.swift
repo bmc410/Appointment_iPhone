@@ -12,6 +12,16 @@ import UIKit
     
 extension Date {
 
+    func ToString(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
+    func add(minutes: Int) -> Date {
+        return Calendar(identifier: .gregorian).date(byAdding: .minute, value: minutes, to: self)!
+    }
+    
     static public func <(a: Date, b: Date) -> Bool {
         return a.compare(b) == ComparisonResult.orderedAscending
     }

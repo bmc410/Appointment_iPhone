@@ -42,7 +42,7 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
         self.showWaitOverlayWithText((text as NSString) as String)
         
         
-        let url = "http://appointmentslotsapi.azurewebsites.net/api/Appointment/GetApptTypes"
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/GetApptTypes"
         
         let obj = RestAPI()
         obj.GetAPI(url) { response in
@@ -69,6 +69,10 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let path = Bundle.main.path(forResource: "Info", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        let url: AnyObject = dict!.object(forKey: "RootURL") as AnyObject
+        MYWSCache.sharedInstance.setObject(url as AnyObject, forKey: "RootURL" as AnyObject)
         
         GetApptTypes()
         

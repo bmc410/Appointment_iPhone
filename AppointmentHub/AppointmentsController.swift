@@ -71,7 +71,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         let text = "Please wait..."
         self.showWaitOverlayWithText((text as NSString) as String)
         
-        let url = "http://appointmentslotsapi.azurewebsites.net/api/Appointment/GetAppointments"
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/GetAppointments"
         
         let obj = RestAPI()
         obj.GetAPI(url) { response in
@@ -96,7 +96,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         self.FSCalendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
-        self.FSCalendar.select(self.formatter.date(from: "2016/11/22")!)
+        self.FSCalendar.select(self.formatter.date(from: Date().ToString(format: "yyyy/MM/dd"))!)
         self.FSCalendar.scope = .week
         
         self.FSCalendar.scopeGesture.isEnabled = true
@@ -146,7 +146,9 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2017/10/31")!
+        let twoWeeks = Date().add(minutes: 20160)
+        let EndDateString = twoWeeks.ToString(format: "yyyy/MM/dd")
+        return self.formatter.date(from: EndDateString)!
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
