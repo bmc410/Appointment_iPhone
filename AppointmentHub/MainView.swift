@@ -79,7 +79,7 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
         CutsTable.dataSource = self
         CutsTable.delegate = self
         
-        self.view.layer.contents = UIImage(named:"background.png")!.cgImage
+        //self.view.layer.contents = UIImage(named:"background.png")!.cgImage
         
         
         

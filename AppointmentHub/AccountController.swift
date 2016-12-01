@@ -12,6 +12,11 @@ import AlamofireObjectMapper
 
 class AccountController:UIViewController{
     
+    
+    @IBAction func LogIn(_ sender: UIButton) {
+    
+    }
+    
     @IBAction func SaveUser(_ sender: UIButton) {
         var actions: [UIAlertAction] = [UIAlertAction]()
         actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: self.PopController))
