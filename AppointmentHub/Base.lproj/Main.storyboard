@@ -235,11 +235,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-RX-YZE">
-                                <rect key="frame" x="26" y="164" width="323" height="296"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-RX-YZE">
+                                <rect key="frame" x="26" y="164" width="323" height="461"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKq-Uk-fJU" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered user's save time by entering your assigned PIN Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as7-5C-6t7">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="39"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-NA-kiM" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="60" width="323" height="39.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter PIN Code"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="PIN Code"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you are not a registered user please complete the following field prior to scheduling" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSJ-uP-Ec3">
+                                        <rect key="frame" x="0.0" y="120.5" width="323" height="39"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKq-Uk-fJU" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="180.5" width="323" height="39.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -252,7 +279,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="npv-1l-qUY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="64" width="323" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="241" width="323" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -262,7 +289,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="12Q-vE-2In" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="128.5" width="323" height="39"/>
+                                        <rect key="frame" x="0.0" y="301" width="323" height="39.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -272,7 +299,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3bf-43-cb0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="192.5" width="323" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="361.5" width="323" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -282,7 +309,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USe-Wn-Tiu">
-                                        <rect key="frame" x="0.0" y="257" width="323" height="39"/>
+                                        <rect key="frame" x="0.0" y="421.5" width="323" height="39.5"/>
                                         <color key="backgroundColor" red="1" green="0.83573911224004294" blue="0.26433401298673664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Schedule Appointment"/>
@@ -299,11 +326,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="USe-Wn-Tiu" secondAttribute="trailing" id="2ak-wq-Xha"/>
                                     <constraint firstAttribute="trailing" secondItem="CKq-Uk-fJU" secondAttribute="trailing" id="9Ze-hY-jMl"/>
+                                    <constraint firstAttribute="trailing" secondItem="as7-5C-6t7" secondAttribute="trailing" id="9f1-Fo-86D"/>
+                                    <constraint firstAttribute="trailing" secondItem="HSJ-uP-Ec3" secondAttribute="trailing" id="H8K-sJ-9Wo"/>
                                     <constraint firstItem="npv-1l-qUY" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="IoI-GE-2T4"/>
                                     <constraint firstItem="CKq-Uk-fJU" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="OE9-gx-oPz"/>
                                     <constraint firstAttribute="trailing" secondItem="12Q-vE-2In" secondAttribute="trailing" id="PRe-9i-1te"/>
                                     <constraint firstAttribute="trailing" secondItem="3bf-43-cb0" secondAttribute="trailing" id="QTT-kI-Xys"/>
+                                    <constraint firstItem="HSJ-uP-Ec3" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="WjG-3X-ngc"/>
                                     <constraint firstItem="12Q-vE-2In" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="bkT-ly-jTO"/>
+                                    <constraint firstItem="as7-5C-6t7" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="hzv-wd-OG1"/>
                                     <constraint firstItem="3bf-43-cb0" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="ltr-qe-Ehf"/>
                                     <constraint firstItem="USe-Wn-Tiu" firstAttribute="leading" secondItem="sHA-RX-YZE" secondAttribute="leading" id="qVA-y6-FSC"/>
                                     <constraint firstAttribute="trailing" secondItem="npv-1l-qUY" secondAttribute="trailing" id="wDl-hB-yzg"/>
@@ -394,7 +425,7 @@
         <!--My Account-->
         <scene sceneID="mTE-uV-Bg1">
             <objects>
-                <viewController id="iHf-bW-nny" customClass="AccountController" customModule="AppointmentHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iHf-bW-nny" customClass="LoginController" customModule="AppointmentHub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PR4-Hv-Z21"/>
                         <viewControllerLayoutGuide type="bottom" id="V3u-pb-i1c"/>
@@ -457,7 +488,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="here"/>
                                         <connections>
-                                            <segue destination="WcZ-xd-Bj6" kind="show" id="nfA-mq-cPU"/>
+                                            <segue destination="WcZ-xd-Bj6" kind="show" identifier="AccountInfoSegue" id="nfA-mq-cPU"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" to create one" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g69-H6-o7X">
@@ -487,6 +518,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="My Account" image="useraccount" id="IUy-z1-FAD"/>
                     <navigationItem key="navigationItem" id="2aD-Wp-RSP"/>
+                    <connections>
+                        <outlet property="Email" destination="ju3-K9-8sj" id="apa-Sk-CRn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAT-Z4-Jex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -632,6 +666,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="EmailAddress" destination="Yub-NZ-4hs" id="bj8-QJ-dXt"/>
+                        <outlet property="FirstName" destination="Ycu-eH-5f0" id="Vlc-wK-ycK"/>
+                        <outlet property="LastName" destination="73z-CM-em7" id="EP7-ck-Az2"/>
+                        <outlet property="PINCode" destination="xnD-Ec-d0L" id="woW-gJ-ZQc"/>
+                        <outlet property="PhoneNumber" destination="nKs-96-byX" id="och-3y-f1M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Kg-OL-AZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

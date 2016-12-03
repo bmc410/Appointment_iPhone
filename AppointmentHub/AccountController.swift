@@ -2,31 +2,55 @@
 //  AccountController.swift
 //  AppointmentHub
 //
-//  Created by William McCoy on 11/27/16.
+//  Created by William McCoy on 12/2/16.
 //  Copyright © 2016 William McCoy. All rights reserved.
 //
+
 import UIKit
-import ObjectMapper
-import Alamofire
-import AlamofireObjectMapper
+import SkyFloatingLabelTextField
 
-class AccountController:UIViewController{
+class AccountController: UIViewController {
+
+    
+    var cust: Customer?
+    
+    @IBOutlet weak var FirstName: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var LastName: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var EmailAddress: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var PhoneNumber: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var PINCode: SkyFloatingLabelTextField!
     
     
-    @IBAction func LogIn(_ sender: UIButton) {
-    
-    }
-    
-    @IBAction func SaveUser(_ sender: UIButton) {
-        var actions: [UIAlertAction] = [UIAlertAction]()
-        actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: self.PopController))
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        FirstName.text = cust?.FirstName
+        LastName.text = cust?.LastName
+        EmailAddress.text = cust?.Email
+        PhoneNumber.text = cust?.Phone
+        PINCode.text = cust?.PIN
         
-        Common.ShowAlert(self, Message: "Submitted successfully.", Actions: actions, Title: "")
+        
+        // Do any additional setup after loading the view.
+    }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func PopController(alert: UIAlertAction!) {
-        //backTwo()
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
+
 }
