@@ -26,6 +26,7 @@
 		021A55391DDBF81E00251AEE /* FSCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A55231DDBF81E00251AEE /* FSCalendar-dummy.m */; };
 		021A553A1DDBF81E00251AEE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 021A55261DDBF81E00251AEE /* Info.plist */; };
 		021D17B51DDAABAF00C786F2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 021D17B41DDAABAF00C786F2 /* Podfile */; };
+		022378881DF64257007BF0F4 /* UpcomingApptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022378871DF64257007BF0F4 /* UpcomingApptController.swift */; };
 		024DF32F1DE6130600651127 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF32E1DE6130600651127 /* RestAPI.swift */; };
 		024DF3311DE6169B00651127 /* ApptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF3301DE6169B00651127 /* ApptModel.swift */; };
 		02AE68E31DE66C47002DB5D2 /* AppointmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */; };
@@ -46,10 +47,38 @@
 		02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5251DD0DEF200582041 /* CutsModel.swift */; };
 		02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */; };
 		02CEEBFA1DE25E7F006F4D5C /* ScheduleApptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */; };
+		02D167211DF322F3007A9C6C /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D1671C1DF322CB007A9C6C /* StackViewController.framework */; };
+		02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167221DF32342007A9C6C /* LabeledTextField.swift */; };
+		02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */; };
+		02D167271DF32A46007A9C6C /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167261DF32A46007A9C6C /* InfoController.swift */; };
 		02F838A41DE61C3D008D13D5 /* MYWSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A31DE61C3D008D13D5 /* MYWSCache.swift */; };
 		02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */; };
 		C4DEB91C1312DD6FCE1B45CF /* Pods_AppointmentHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		02D1671B1DF322CB007A9C6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 72D193E41CC3576A00645F83;
+			remoteInfo = StackViewController;
+		};
+		02D1671D1DF322CB007A9C6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 72D193ED1CC3576A00645F83;
+			remoteInfo = StackViewControllerTests;
+		};
+		02D1671F1DF322CB007A9C6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 72D1940B1CC357A100645F83;
+			remoteInfo = Example;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		021202511DE8F8B100FE3574 /* ApptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptType.swift; sourceTree = "<group>"; };
@@ -90,6 +119,7 @@
 		021A55251DDBF81E00251AEE /* FSCalendar-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSCalendar-umbrella.h"; sourceTree = "<group>"; };
 		021A55261DDBF81E00251AEE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021D17B41DDAABAF00C786F2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		022378871DF64257007BF0F4 /* UpcomingApptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingApptController.swift; sourceTree = "<group>"; };
 		024DF32E1DE6130600651127 /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		024DF3301DE6169B00651127 /* ApptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptModel.swift; sourceTree = "<group>"; };
 		02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentRequest.swift; sourceTree = "<group>"; };
@@ -112,6 +142,10 @@
 		02B9C5251DD0DEF200582041 /* CutsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutsModel.swift; sourceTree = "<group>"; };
 		02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleApptView.swift; sourceTree = "<group>"; };
+		02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = "../StackViewController-master/StackViewController.xcodeproj"; sourceTree = "<group>"; };
+		02D167221DF32342007A9C6C /* LabeledTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
+		02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldController.swift; sourceTree = "<group>"; };
+		02D167261DF32A46007A9C6C /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		02F838A31DE61C3D008D13D5 /* MYWSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYWSCache.swift; sourceTree = "<group>"; };
 		02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOverlays.swift; sourceTree = "<group>"; };
 		4FD795FCDB934C0B6ACA960E /* Pods-AppointmentHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppointmentHub/Pods-AppointmentHub.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D167211DF322F3007A9C6C /* StackViewController.framework in Frameworks */,
 				C4DEB91C1312DD6FCE1B45CF /* Pods_AppointmentHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +228,8 @@
 				02B40F2D1DD13B88001E3AE3 /* AppointmentsController.swift */,
 				02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */,
 				02B67E501DF264E900C71443 /* AccountController.swift */,
+				02D167261DF32A46007A9C6C /* InfoController.swift */,
+				022378871DF64257007BF0F4 /* UpcomingApptController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +237,8 @@
 		024DF32C1DE6123D00651127 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				02D167221DF32342007A9C6C /* LabeledTextField.swift */,
+				02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */,
 				02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */,
 				02B9C50C1DD0C6F600582041 /* AppDelegate.swift */,
 				02B9C51A1DD0C6F600582041 /* Info.plist */,
@@ -267,9 +306,20 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		02D167161DF322CB007A9C6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02D1671C1DF322CB007A9C6C /* StackViewController.framework */,
+				02D1671E1DF322CB007A9C6C /* StackViewControllerTests.xctest */,
+				02D167201DF322CB007A9C6C /* Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9AF61CE3D58F4602FC48BFEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */,
 				8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */,
 			);
 			name = Frameworks;
@@ -335,12 +385,42 @@
 			mainGroup = 02B9C5001DD0C6F600582041;
 			productRefGroup = 02B9C50A1DD0C6F600582041 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 02D167161DF322CB007A9C6C /* Products */;
+					ProjectRef = 02D167151DF322CB007A9C6C /* StackViewController.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				02B9C5081DD0C6F600582041 /* AppointmentHub */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		02D1671C1DF322CB007A9C6C /* StackViewController.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = StackViewController.framework;
+			remoteRef = 02D1671B1DF322CB007A9C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		02D1671E1DF322CB007A9C6C /* StackViewControllerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = StackViewControllerTests.xctest;
+			remoteRef = 02D1671D1DF322CB007A9C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		02D167201DF322CB007A9C6C /* Example.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Example.app;
+			remoteRef = 02D1671F1DF322CB007A9C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		02B9C5071DD0C6F600582041 /* Resources */ = {
@@ -422,8 +502,10 @@
 				02CEEBFA1DE25E7F006F4D5C /* ScheduleApptView.swift in Sources */,
 				021A55371DDBF81E00251AEE /* FSCalendarWeekdayView.m in Sources */,
 				02B40F301DD13B88001E3AE3 /* AppointmentsController.swift in Sources */,
+				022378881DF64257007BF0F4 /* UpcomingApptController.swift in Sources */,
 				021A55291DDBF81E00251AEE /* FSCalendar.m in Sources */,
 				02B67E531DF2654500C71443 /* LoginController.swift in Sources */,
+				02D167271DF32A46007A9C6C /* InfoController.swift in Sources */,
 				02AE68E71DE67474002DB5D2 /* JSONSerializer.swift in Sources */,
 				021A55391DDBF81E00251AEE /* FSCalendar-dummy.m in Sources */,
 				02B2A2DE1DD22AC900491B14 /* AKPickerView.swift in Sources */,
@@ -442,7 +524,9 @@
 				02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */,
 				021A55341DDBF81E00251AEE /* FSCalendarHeaderView.m in Sources */,
 				02B9C5211DD0D8B800582041 /* CardView.swift in Sources */,
+				02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */,
 				021202521DE8F8B100FE3574 /* ApptType.swift in Sources */,
+				02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */,
 				02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */,
 				02B9C5231DD0DA2400582041 /* MainView.swift in Sources */,
 				02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */,

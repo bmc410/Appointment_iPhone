@@ -8,6 +8,10 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import StackViewController
+import ObjectMapper
+import Alamofire
+import AlamofireObjectMapper
 
 class ScheduleApptView: UIViewController {
     
@@ -19,7 +23,12 @@ class ScheduleApptView: UIViewController {
     var EndDateString:String?
     var dFormatString = "MM/d/yyyy h:mm a"
     
+    @IBAction func FindMe(_ sender: Any) {
+        GetCustomer(PINCode: PINCode.text!)
+    }
     
+    @IBOutlet weak var PINCode: SkyFloatingLabelTextField!
+    @IBOutlet weak var InfoStackView: StackViewController!
     @IBOutlet var FirstName: SkyFloatingLabelTextField!
     @IBOutlet var LastName: SkyFloatingLabelTextField!
     @IBOutlet var Email: SkyFloatingLabelTextField!
@@ -32,6 +41,29 @@ class ScheduleApptView: UIViewController {
         Schedule()
     }
     
+    
+    func GetCustomer(PINCode:String)
+    {
+        let text = "Please wait..."
+        self.showWaitOverlayWithText((text as NSString) as String)
+        
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/GetCustomerByPin?PINCode=" + PINCode
+        
+        let obj = RestAPI()
+        obj.GetAPI(url) { response in
+            let user = Mapper<Customer>().map(JSON: response.rawValue as! [String : Any])
+            self.FirstName.text = user?.FirstName
+            self.LastName.text = user?.LastName
+            self.Email.text = user?.Email
+            self.Phone.text = user?.Phone
+        }
+        
+        // Remove everything
+        self.removeAllOverlays()
+        SwiftOverlays.removeAllBlockingOverlays()
+        
+    }
+
     
     func FormatDateTimeString() {
         let formatter = DateFormatter()
@@ -98,8 +130,6 @@ class ScheduleApptView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
         
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM d"
