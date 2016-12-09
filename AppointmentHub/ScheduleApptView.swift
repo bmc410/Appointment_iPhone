@@ -22,6 +22,8 @@ class ScheduleApptView: UIViewController {
     var StartDateString: String?
     var EndDateString:String?
     var dFormatString = "MM/d/yyyy h:mm a"
+    var cust:Customer?
+    
     
     @IBAction func FindMe(_ sender: Any) {
         GetCustomer(PINCode: PINCode.text!)
@@ -107,8 +109,8 @@ class ScheduleApptView: UIViewController {
         request.EndDateTime = EndDateString
         request.FirstName = FirstName.text
         request.LastName = LastName.text
-        request.Email = Email.text
-        request.Phone = Phone.text
+        request.Email = cust?.Email
+        request.Phone = cust?.Phone
         
         let json = JSONSerializer.toJson(request)
         var apptPostData:NSDictionary = NSDictionary()
@@ -136,6 +138,8 @@ class ScheduleApptView: UIViewController {
         let dateString = formatter.string(from: selectedDate!)
         DateTimeLabel.text = "You are scheduling an appointment for " + dateString + " at " + selectedTime
         
+        cust = MYWSCache.sharedInstance.object(forKey: "Customer" as AnyObject) as? Customer
+        FirstName.text = cust?.FirstName
+        LastName.text = cust?.LastName
     }
-    
 }

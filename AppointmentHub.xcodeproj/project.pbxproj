@@ -29,6 +29,7 @@
 		022378881DF64257007BF0F4 /* UpcomingApptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022378871DF64257007BF0F4 /* UpcomingApptController.swift */; };
 		024DF32F1DE6130600651127 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF32E1DE6130600651127 /* RestAPI.swift */; };
 		024DF3311DE6169B00651127 /* ApptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF3301DE6169B00651127 /* ApptModel.swift */; };
+		02A6BFC31DFA2CB500591D81 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */; };
 		02AE68E31DE66C47002DB5D2 /* AppointmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */; };
 		02AE68E51DE66E7E002DB5D2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E41DE66E7E002DB5D2 /* Common.swift */; };
 		02AE68E71DE67474002DB5D2 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE68E61DE67474002DB5D2 /* JSONSerializer.swift */; };
@@ -51,6 +52,9 @@
 		02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167221DF32342007A9C6C /* LabeledTextField.swift */; };
 		02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */; };
 		02D167271DF32A46007A9C6C /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167261DF32A46007A9C6C /* InfoController.swift */; };
+		02D583A71DFA2DEA007DED04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D583A61DFA2DEA007DED04 /* LoginViewController.swift */; };
+		02D583AC1DFA2EF0007DED04 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D583AB1DFA2EF0007DED04 /* Helper.swift */; };
+		02F18AE81DFA43C200E1296A /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F18AE71DFA43C200E1296A /* LoginRequest.swift */; };
 		02F838A41DE61C3D008D13D5 /* MYWSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A31DE61C3D008D13D5 /* MYWSCache.swift */; };
 		02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */; };
 		C4DEB91C1312DD6FCE1B45CF /* Pods_AppointmentHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */; };
@@ -122,6 +126,7 @@
 		022378871DF64257007BF0F4 /* UpcomingApptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingApptController.swift; sourceTree = "<group>"; };
 		024DF32E1DE6130600651127 /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		024DF3301DE6169B00651127 /* ApptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptModel.swift; sourceTree = "<group>"; };
+		02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentRequest.swift; sourceTree = "<group>"; };
 		02AE68E41DE66E7E002DB5D2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		02AE68E61DE67474002DB5D2 /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
@@ -146,6 +151,9 @@
 		02D167221DF32342007A9C6C /* LabeledTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldController.swift; sourceTree = "<group>"; };
 		02D167261DF32A46007A9C6C /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
+		02D583A61DFA2DEA007DED04 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02D583AB1DFA2EF0007DED04 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		02F18AE71DFA43C200E1296A /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		02F838A31DE61C3D008D13D5 /* MYWSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYWSCache.swift; sourceTree = "<group>"; };
 		02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOverlays.swift; sourceTree = "<group>"; };
 		4FD795FCDB934C0B6ACA960E /* Pods-AppointmentHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppointmentHub/Pods-AppointmentHub.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 		024DF32B1DE611AC00651127 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02D583A61DFA2DEA007DED04 /* LoginViewController.swift */,
 				02B67E521DF2654500C71443 /* LoginController.swift */,
 				02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */,
 				02B9C5221DD0DA2400582041 /* MainView.swift */,
@@ -230,6 +239,7 @@
 				02B67E501DF264E900C71443 /* AccountController.swift */,
 				02D167261DF32A46007A9C6C /* InfoController.swift */,
 				022378871DF64257007BF0F4 /* UpcomingApptController.swift */,
+				02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +247,8 @@
 		024DF32C1DE6123D00651127 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				02B9C5151DD0C6F600582041 /* Assets.xcassets */,
+				02D583AB1DFA2EF0007DED04 /* Helper.swift */,
 				02D167221DF32342007A9C6C /* LabeledTextField.swift */,
 				02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */,
 				02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */,
@@ -285,11 +297,10 @@
 		02B9C50B1DD0C6F600582041 /* AppointmentHub */ = {
 			isa = PBXGroup;
 			children = (
+				024DF32B1DE611AC00651127 /* Controllers */,
 				024DF32D1DE6127000651127 /* Storyboards */,
 				024DF32C1DE6123D00651127 /* Common */,
 				02B9C5241DD0DECE00582041 /* Models */,
-				02B9C5151DD0C6F600582041 /* Assets.xcassets */,
-				024DF32B1DE611AC00651127 /* Controllers */,
 			);
 			path = AppointmentHub;
 			sourceTree = "<group>";
@@ -302,6 +313,7 @@
 				024DF3301DE6169B00651127 /* ApptModel.swift */,
 				02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */,
 				021202511DE8F8B100FE3574 /* ApptType.swift */,
+				02F18AE71DFA43C200E1296A /* LoginRequest.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -490,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D583A71DFA2DEA007DED04 /* LoginViewController.swift in Sources */,
 				02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */,
 				021A552C1DDBF81E00251AEE /* FSCalendarAppearance.m in Sources */,
 				02B40F311DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift in Sources */,
@@ -519,6 +532,7 @@
 				021A552E1DDBF81E00251AEE /* FSCalendarCell.m in Sources */,
 				021A55331DDBF81E00251AEE /* FSCalendarExtensions.m in Sources */,
 				021A55321DDBF81E00251AEE /* FSCalendarDelegateProxy.m in Sources */,
+				02D583AC1DFA2EF0007DED04 /* Helper.swift in Sources */,
 				024DF3311DE6169B00651127 /* ApptModel.swift in Sources */,
 				02B9C50D1DD0C6F600582041 /* AppDelegate.swift in Sources */,
 				02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */,
@@ -526,10 +540,12 @@
 				02B9C5211DD0D8B800582041 /* CardView.swift in Sources */,
 				02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */,
 				021202521DE8F8B100FE3574 /* ApptType.swift in Sources */,
+				02A6BFC31DFA2CB500591D81 /* HomeViewController.swift in Sources */,
 				02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */,
 				02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */,
 				02B9C5231DD0DA2400582041 /* MainView.swift in Sources */,
 				02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */,
+				02F18AE81DFA43C200E1296A /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

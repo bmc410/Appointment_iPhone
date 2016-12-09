@@ -14,17 +14,6 @@ import AlamofireObjectMapper
 //
 // MARK: - Section Data Structure
 //
-struct Section {
-    var name: String!
-    var items: [String]!
-    var collapsed: Bool!
-    
-    init(name: String, items: [String], collapsed: Bool = false) {
-        self.name = name
-        self.items = items
-        self.collapsed = collapsed
-    }
-}
 
 class MyCustomCell: UITableViewCell {
     
