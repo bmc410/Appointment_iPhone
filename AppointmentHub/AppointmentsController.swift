@@ -10,6 +10,8 @@ import UIKit
 import ObjectMapper
 import Alamofire
 import AlamofireObjectMapper
+import MZAppearance
+import MZFormSheetPresentationController
 
 //
 // MARK: - Section Data Structure
@@ -33,6 +35,8 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     var selectedTime: String = ""
     var selectedDate: Date?
     var Duration: Int?
+    var CutName:String?
+    var CutType:Int?
     
     @IBOutlet weak var FSCalendar: FSCalendar!
     
@@ -49,11 +53,46 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // get a reference to the second view controller
-        let secondViewController = segue.destination as! ScheduleApptView
-        secondViewController.selectedTime = selectedTime
-        secondViewController.selectedDate = selectedDate
+        //let secondViewController = segue.destination as! ScheduleApptView
+        //secondViewController.selectedTime = selectedTime
+        //secondViewController.selectedDate = selectedDate
         
     }
+    
+    func passDataToViewControllerAction() {
+        let navigationController = self.formSheetControllerWithNavigationController()
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+        //formSheetController.presentationController?.shouldDismissOnBackgroundViewTap = true
+        //formSheetController.presentationController?.shouldApplyBackgroundBlurEffect = true
+        
+        let presentedViewController = navigationController.viewControllers.first as! ScheduleApptView
+        presentedViewController.CutTimeVar = selectedTime
+        presentedViewController.CutDateVar = selectedDate?.ToString(format: "EEEE, MMMM d")
+        presentedViewController.CutTypeID = CutType
+        presentedViewController.CutNameVar = CutName
+        presentedViewController.selectedDate = selectedDate
+        presentedViewController.selectedTime = selectedTime
+        presentedViewController.duration = Duration
+        
+        
+         formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 300)
+        
+        formSheetController.willPresentContentViewControllerHandler = { vc in
+            let navigationController = vc as! UINavigationController
+            let presentedViewController = navigationController.viewControllers.first as! ScheduleApptView
+            presentedViewController.view?.layoutIfNeeded()
+            //presentedViewController.textField?.text = "PASS DATA DIRECTLY TO OUTLET!!"
+        }
+        
+        self.present(formSheetController, animated: true, completion: nil)
+    }
+    
+    
+    func formSheetControllerWithNavigationController() -> UINavigationController {
+        return self.storyboard!.instantiateViewController(withIdentifier: "formSheetController") as! UINavigationController
+    }
+
+    
     
     func GetAllAppointments(loadTable:Bool)
     {
@@ -84,6 +123,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MZTransition.registerClass(ScheduleApptView.self, for: .custom)
         self.FSCalendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
         self.FSCalendar.select(self.formatter.date(from: Date().ToString(format: "yyyy/MM/dd"))!)
         self.FSCalendar.scope = .week
@@ -113,7 +153,9 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         let currentCell = tableView.cellForRow(at: indexPath!) as! MyCustomCell
         selectedTime = currentCell.ApptTimeLabel.text!
         
-        self.performSegue(withIdentifier: "ShowApptScheduler", sender: self)
+        passDataToViewControllerAction()
+        //customContentViewSizeAction()
+        //self.performSegue(withIdentifier: "ShowApptScheduler", sender: self)
         
     }
     
@@ -168,7 +210,8 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func FillSlotsArray(){
-        let duration:TimeInterval = 30
+        let d:Double = Double(Duration!)
+        let duration:TimeInterval = d
         let time = Time(startHour: 8, intervalMinutes: duration, endHour: 18)
         let array = time.timeRepresentations
         let dateFormatter = DateFormatter()

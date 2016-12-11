@@ -12,6 +12,8 @@ import StackViewController
 import ObjectMapper
 import Alamofire
 import AlamofireObjectMapper
+import MZAppearance
+import MZFormSheetPresentationController
 
 class ScheduleApptView: UIViewController {
     
@@ -24,48 +26,32 @@ class ScheduleApptView: UIViewController {
     var dFormatString = "MM/d/yyyy h:mm a"
     var cust:Customer?
     
+    var CutTimeVar:String?
+    var CutDateVar:String?
+    var CutNameVar:String?
+    var CutTypeID:Int?
     
-    @IBAction func FindMe(_ sender: Any) {
-        GetCustomer(PINCode: PINCode.text!)
-    }
     
-    @IBOutlet weak var PINCode: SkyFloatingLabelTextField!
-    @IBOutlet weak var InfoStackView: StackViewController!
-    @IBOutlet var FirstName: SkyFloatingLabelTextField!
-    @IBOutlet var LastName: SkyFloatingLabelTextField!
-    @IBOutlet var Email: SkyFloatingLabelTextField!
-    @IBOutlet var Phone: SkyFloatingLabelTextField!
-    
+      
+    @IBOutlet weak var CutType: UILabel!
+    @IBOutlet weak var CutDate: UILabel!
+    @IBOutlet weak var CutTime: UILabel!
     
        
     @IBOutlet weak var DateTimeLabel: UILabel!
     @IBAction func ScheduleAppointment(_ sender: UIButton) {
-        Schedule()
-    }
-    
-    
-    func GetCustomer(PINCode:String)
-    {
-        let text = "Please wait..."
-        self.showWaitOverlayWithText((text as NSString) as String)
         
-        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/GetCustomerByPin?PINCode=" + PINCode
+        cust = MYWSCache.sharedInstance["Customer" as AnyObject] as? Customer
         
-        let obj = RestAPI()
-        obj.GetAPI(url) { response in
-            let user = Mapper<Customer>().map(JSON: response.rawValue as! [String : Any])
-            self.FirstName.text = user?.FirstName
-            self.LastName.text = user?.LastName
-            self.Email.text = user?.Email
-            self.Phone.text = user?.Phone
+        if cust == nil{
+            performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
+        else{
+            Schedule()
         }
         
-        // Remove everything
-        self.removeAllOverlays()
-        SwiftOverlays.removeAllBlockingOverlays()
-        
     }
-
+    
     
     func FormatDateTimeString() {
         let formatter = DateFormatter()
@@ -75,8 +61,8 @@ class ScheduleApptView: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dFormatString
-        let startDate = dateFormatter.date(from: dateString)
-        let endDate = startDate?.add(minutes: 30)
+        let startDate = dateFormatter.date(from: StartDateString!)
+        let endDate = startDate?.add(minutes: duration!)
         
         EndDateString = endDate?.ToString(format: dFormatString)
         
@@ -93,10 +79,28 @@ class ScheduleApptView: UIViewController {
         backTwo()
     }
     
+    func customContentViewSizeAction() {
+        let navigationController = self.formSheetControllerWithNavigationController()
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+        formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 300)
+        
+        self.present(formSheetController, animated: true, completion: nil)
+    }
+    
+    func formSheetControllerWithNavigationController() -> UINavigationController {
+        return self.storyboard!.instantiateViewController(withIdentifier: "formSheetController") as! UINavigationController
+    }
+    
+    func closeHandler(alert: UIAlertAction!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    
     private func Schedule(){
+        
         let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/ScheduleAppointment"
         var actions: [UIAlertAction] = [UIAlertAction]()
-        actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: self.PopController))
+        actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: closeHandler ))
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dFormatString
@@ -104,13 +108,10 @@ class ScheduleApptView: UIViewController {
          _ = FormatDateTimeString()
         
         
-        request.AppointmentType = 1
+        request.AppointmentType = CutTypeID
         request.StartDateTime = StartDateString
         request.EndDateTime = EndDateString
-        request.FirstName = FirstName.text
-        request.LastName = LastName.text
-        request.Email = cust?.Email
-        request.Phone = cust?.Phone
+        request.CustId = cust?.CustId
         
         let json = JSONSerializer.toJson(request)
         var apptPostData:NSDictionary = NSDictionary()
@@ -129,10 +130,22 @@ class ScheduleApptView: UIViewController {
         }
     }
     
+    func closeForm() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        CutDate.text = CutDateVar
+        CutTime.text = CutTimeVar
+        CutType.text = CutNameVar
+        
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .plain, target: self, action: #selector(ScheduleApptView.closeForm))
+        
+        self.navigationItem.title = "Confirm Appointment"
+        
+        /*
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM d"
         let dateString = formatter.string(from: selectedDate!)
@@ -141,5 +154,6 @@ class ScheduleApptView: UIViewController {
         cust = MYWSCache.sharedInstance.object(forKey: "Customer" as AnyObject) as? Customer
         FirstName.text = cust?.FirstName
         LastName.text = cust?.LastName
+ */
     }
 }

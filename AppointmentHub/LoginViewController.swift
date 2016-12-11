@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Presentr
 import Eureka
 import ObjectMapper
 import Alamofire
@@ -17,17 +16,29 @@ import SkyFloatingLabelTextField
 class LoginViewController: FormViewController {
 
     var cust:Customer?
+    var IsFirstItem:Bool = false
+    var ApptForm:UpcomingApptController?
+    
+    func closeForm() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Login"
+        if IsFirstItem{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .plain, target: self, action: #selector(LoginViewController.closeForm))
+
+        }
 
         form +++
-            Helper.CreateSection(MyView: self, title: "LOGIN")
+            Section(" ")
                       
-            <<< TextRow() {
+            <<< AccountRow() {
                 $0.title = "Login:"
-                $0.placeholder = "Login or email"
+                $0.placeholder = "Username"
                 $0.tag = "uname"
-                }
+            }
             
             <<< PasswordRow() {
                 $0.title = "Password:"
@@ -50,14 +61,14 @@ class LoginViewController: FormViewController {
                 row.title = "I don't have an account"
                 }
                 .onCellSelection { [weak self] (cell, row) in
-                    self?.showAlert()
+                    self?.Dismiss()
             }
         
         
         // Do any additional setup after loading the view.
     }
     
-    func showAlert() {
+    func Dismiss() {
         dismiss(animated: true, completion: nil)
         
     }
@@ -73,11 +84,11 @@ class LoginViewController: FormViewController {
         let text = "Please wait..."
         self.showWaitOverlayWithText((text as NSString) as String)
 
-        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/Login"
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Account/Login"
         
         let request = LoginRequest()
         
-        let row: TextRow? = form.rowBy(tag: "uname")
+        let row: AccountRow? = form.rowBy(tag: "uname")
         request.Username = row?.value
         let row1: PasswordRow? = form.rowBy(tag: "pword")
         request.Password = row1?.value
@@ -97,12 +108,19 @@ class LoginViewController: FormViewController {
         let obj = RestAPI()
         obj.PostAPI(url, postData: apptPostData) { response in
             self.cust = Mapper<Customer>().map(JSONString: response.rawString()!)
-            if self.cust != nil{
+            if self.cust != nil && self.cust?.CustId != nil{
                MYWSCache.sharedInstance.setObject(self.cust as AnyObject, forKey: "Customer" as Any as AnyObject)
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UITabBarController") as! UITabBarController
-                self.present(nextViewController, animated:true, completion:nil)
+                if self.IsFirstItem{
+                    self.ApptForm?.GetAppts()
+                    self.Dismiss()
+                }
+                else{
+                    let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+                    self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+ 
+                }
+                
             }
             
         }
@@ -123,13 +141,7 @@ extension FormViewController{
 
 // MARK: - Presentr Delegate
 
-extension LoginViewController: PresentrDelegate {
-    
-    func presentrShouldDismiss(keyboardShowing: Bool) -> Bool {
-        return !keyboardShowing
-    }
-    
-}
+
 
 // MARK: - UITextField Delegate
 

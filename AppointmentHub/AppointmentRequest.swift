@@ -46,6 +46,7 @@ class Customer: Mappable {
 
 class AppointmentRequest{
     
+    var CustId:Int?
     var FirstName: String?
     var LastName: String?
     var Email: String?

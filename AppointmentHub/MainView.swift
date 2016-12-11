@@ -22,17 +22,24 @@ class ScheduleCuts : UITableViewCell {
 
 class ScheduleController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var HomeImage: UIImageView!
+    
+    @IBOutlet weak var ScheduleLabel: UILabel!
+    
+    
     @IBOutlet weak var CutsTable: UITableView!
     var cuts = [CutsModel]()
     var duration:Int?
     var ApptTypes: [ApptType]?
+    var CutsName:String?
+    var CutsType:Int?
+    var secondViewController:AppointmentController?
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // get a reference to the second view controller
-        let secondViewController = segue.destination as! AppointmentController
-        secondViewController.Duration = duration
+        secondViewController = segue.destination as? AppointmentController
         
         
     }
@@ -60,6 +67,9 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
             self.CutsTable.reloadData()
             
             self.removeAllOverlays()
+            self.HomeImage.isHidden = true
+            self.ScheduleLabel.isHidden = false
+            self.CutsTable.separatorStyle = .singleLine
             SwiftOverlays.removeAllBlockingOverlays()
             
             MYWSCache.sharedInstance.setObject(self.ApptTypes as AnyObject, forKey: "ApptTypes" as AnyObject)
@@ -69,6 +79,8 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HomeImage.isHidden = false
+        CutsTable.separatorStyle = .none
         let path = Bundle.main.path(forResource: "Info", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: path!)
         let url: AnyObject = dict!.object(forKey: "RootURL") as AnyObject
@@ -78,6 +90,8 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
         
         CutsTable.dataSource = self
         CutsTable.delegate = self
+        CutsTable.rowHeight = UITableViewAutomaticDimension
+        CutsTable.estimatedRowHeight = 140
         
         //self.view.layer.contents = UIImage(named:"background.png")!.cgImage
         
@@ -94,15 +108,22 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //self.RxDetailTable.rowHeight = UITableViewAutomaticDimension
-        //return self.RxDetailTable.rowHeight
-        return 115
+        self.CutsTable.rowHeight = UITableViewAutomaticDimension
+        return self.CutsTable.rowHeight
+        //return 100
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         duration = cuts[indexPath.row].CutTime
+        CutsName = cuts[indexPath.row].CutName
+        CutsType = cuts[indexPath.row].CutTypeID
+        secondViewController?.Duration = duration
+        secondViewController?.CutName = CutsName
+        secondViewController?.CutType = CutsType
+
+        
         //selectedItem = self.refillHist![(indexPath as NSIndexPath).row] as RefillHistory
         //self.performSegue(withIdentifier: "SlotsDetail", sender: nil)
         
@@ -115,7 +136,7 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
         cell?.CutTitle.text = cuts[(indexPath as NSIndexPath).row].CutName
         cell?.CutCost.text = "Cost: $" + String(describing: cuts[(indexPath as NSIndexPath).row].CutPrice!)
         cell?.CutDetail.text = cuts[(indexPath as NSIndexPath).row].CutDetail
-        cell!.CardViewConstraint.constant = 95
+        
         return cell!
     }
 }
