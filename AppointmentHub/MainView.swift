@@ -22,9 +22,11 @@ class ScheduleCuts : UITableViewCell {
 
 class ScheduleController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+   
     @IBOutlet weak var HomeImage: UIImageView!
+    @IBOutlet weak var BorderImage: UIImageView!
     
-    @IBOutlet weak var ScheduleLabel: UILabel!
+    @IBOutlet weak var RecurButton: UIButton!
     
     
     @IBOutlet weak var CutsTable: UITableView!
@@ -68,7 +70,8 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.removeAllOverlays()
             self.HomeImage.isHidden = true
-            self.ScheduleLabel.isHidden = false
+            self.BorderImage.isHidden = false
+            self.RecurButton.isHidden = false
             self.CutsTable.separatorStyle = .singleLine
             SwiftOverlays.removeAllBlockingOverlays()
             
@@ -94,7 +97,15 @@ class ScheduleController: UIViewController, UITableViewDelegate, UITableViewData
         CutsTable.estimatedRowHeight = 140
         
         //self.view.layer.contents = UIImage(named:"background.png")!.cgImage
+        CutsTable.tableFooterView = UIView()
         
+        BorderImage.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
+        UIView.animate(withDuration: 3, animations: { () -> Void in
+            
+            self.BorderImage.transform = CGAffineTransform(scaleX: 1,y: 1)
+            
+        })
         
         
 

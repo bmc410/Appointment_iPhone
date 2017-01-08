@@ -31,6 +31,8 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     
     var refreshControl = UIRefreshControl()
     var Appts: [Appt]?
+    var Slots: [SlotModel]?
+    var SelectedDaySlots: [SlotModel] = [SlotModel]()
     var openSlots: [String] = []
     var selectedTime: String = ""
     var selectedDate: Date?
@@ -73,9 +75,10 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         presentedViewController.selectedDate = selectedDate
         presentedViewController.selectedTime = selectedTime
         presentedViewController.duration = Duration
+        presentedViewController.ApptCtrl = self
         
         
-         formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 300)
+         formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 280)
         
         formSheetController.willPresentContentViewControllerHandler = { vc in
             let navigationController = vc as! UINavigationController
@@ -93,7 +96,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     
-    
+    /*
     func GetAllAppointments(loadTable:Bool)
     {
         let text = "Please wait..."
@@ -118,7 +121,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
             MYWSCache.sharedInstance.setObject(self.Appts as AnyObject, forKey: "Appts" as AnyObject)
         }
     }
-
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,23 +131,38 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         self.FSCalendar.select(self.formatter.date(from: Date().ToString(format: "yyyy/MM/dd"))!)
         self.FSCalendar.scope = .week
         
+        GetAvailableSlots()
+        
         self.FSCalendar.scopeGesture.isEnabled = true
         self.ApptTable.delegate = self
         self.ApptTable.dataSource = self
-        GetAllAppointments(loadTable: false)
+        //GetAllAppointments(loadTable: false)
         
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        
+        //refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
         refreshControl.addTarget(self, action: #selector(AppointmentController.refresh), for: UIControlEvents.valueChanged)
         self.ApptTable?.addSubview(refreshControl)
         selectedDate = Date()
-        refresh()
+        //refresh()
 
         
     }
     
     func refresh() {
-        self.GetAllAppointments(loadTable: true)
-        refreshControl.endRefreshing()
+        GetAvailableSlots()
+        // update "last updated" title for refresh control
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .long
+        let now = NSDate()
+        let updateString = "Last Updated at " + df.string(from: now as Date)
+        self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -160,26 +178,47 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.openSlots.count)
+        if self.SelectedDaySlots == nil {
+            return 0
+        }
+        else {
+            return (self.SelectedDaySlots.count)
+        }
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:MyCustomCell = self.ApptTable.dequeueReusableCell(withIdentifier: "CustomCell") as! MyCustomCell
-        cell.ApptTimeLabel.text = openSlots[indexPath.row]
+        if self.SelectedDaySlots.count == 0{
+            return cell
+        }
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: (SelectedDaySlots[indexPath.row].dtStartSlot)!)
+        cell.ApptTimeLabel.text = time
         
         return cell
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2016/11/08")!
+        let EndDateString = Date().ToString(format: "yyyy/MM/dd")
+        return self.formatter.date(from: EndDateString)!
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        let twoWeeks = Date().add(minutes: 20160)
-        let EndDateString = twoWeeks.ToString(format: "yyyy/MM/dd")
-        return self.formatter.date(from: EndDateString)!
+        var components = DateComponents()
+        components.setValue(2, for: .month)
+        let date: Date = Date()
+        let expirationDate = Calendar.current.date(byAdding: components, to: date)
+        //let twoWeeks = Date().add(minutes: 20160)
+        let EndDateString = expirationDate?.ToString(format: "yyyy/MM/dd")
+        
+        //let EndDateString = twoWeeks.ToString(format: "yyyy/MM/dd")
+        return self.formatter.date(from: EndDateString!)!
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -192,8 +231,34 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date) {
+        let lastRefreshed = MYWSCache.sharedInstance["LastRefreshed" as AnyObject] as! Date
+        let calendar = NSCalendar.current
+        let unitFlags = Set<Calendar.Component>([.second])
+        let anchorComponents = calendar.dateComponents(unitFlags, from: lastRefreshed as Date,  to: Date() as Date)
+        if(anchorComponents.second! > 30){
+            GetAvailableSlots()
+            return
+        }
+        
+        
         selectedDate = date
-        FillSlotsArray()
+        self.SelectedDaySlots.removeAll()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        for a in self.Slots!{
+            //let d = dateFormatter.date(from: a.StartSlot!)
+            a.dtStartSlot = dateFormatter.date(from: a.StartSlot!)
+            a.dtEndSlot = dateFormatter.date(from: a.EndSlot!)
+            if NSCalendar.current.isDate(a.dtStartSlot!, inSameDayAs: FSCalendar.selectedDate){
+                self.SelectedDaySlots.append(a)
+            }
+        }
+        
+        self.ApptTable.reloadData()
+
+        //FillSlotsArray()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -209,6 +274,56 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         return (dateString)
     }
     
+    
+    func GetAvailableSlots()
+    {
+        let request:SlotsRequest = SlotsRequest()
+        self.SelectedDaySlots.removeAll()
+        self.Slots?.removeAll()
+        request.apptLength = 30
+        request.daysToGet = 30
+        request.duration = 15
+        
+        let json = JSONSerializer.toJson(request)
+        var slotPostData:NSDictionary = NSDictionary()
+        
+        do {
+            slotPostData = try JSONSerializer.toDictionary(json)
+            
+        } catch {
+            print("JSON serialization failed:  \(error)")
+        }
+        
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/GetSlots"
+        
+
+        let obj = RestAPI()
+        obj.PostAPI(url, postData: slotPostData) { response in
+            self.Slots = Mapper<SlotModel>().mapArray(JSONString: response.rawString()!)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            
+            for a in self.Slots!{
+                //let d = dateFormatter.date(from: a.StartSlot!)
+                a.dtStartSlot = dateFormatter.date(from: a.StartSlot!)
+                a.dtEndSlot = dateFormatter.date(from: a.EndSlot!)
+                if NSCalendar.current.isDate(a.dtStartSlot!, inSameDayAs: self.FSCalendar.selectedDate){
+                    self.SelectedDaySlots.append(a)
+                }
+            }
+            
+            self.ApptTable.reloadData()
+        }
+        MYWSCache.sharedInstance.setObject(Date() as AnyObject, forKey: "LastRefreshed" as AnyObject)
+        
+
+        
+    }
+    
+    /*
     func FillSlotsArray(){
         let d:Double = Double(Duration!)
         let duration:TimeInterval = d
@@ -239,7 +354,7 @@ class AppointmentController: UIViewController, UITableViewDelegate, UITableViewD
         }
         ApptTable.reloadData()
     }
-    
+    */
     
 }
 

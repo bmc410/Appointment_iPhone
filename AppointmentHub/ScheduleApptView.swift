@@ -14,9 +14,15 @@ import Alamofire
 import AlamofireObjectMapper
 import MZAppearance
 import MZFormSheetPresentationController
+import UserNotifications
+import UserNotificationsUI
+import KMPlaceholderTextView
 
-class ScheduleApptView: UIViewController {
+
+
+class ScheduleApptView: UIViewController,UITextFieldDelegate {
     
+    let requestIdentifier = "SampleRequest"
     var selectedTime: String = ""
     var selectedDate: Date?
     var request:AppointmentRequest = AppointmentRequest()
@@ -25,17 +31,23 @@ class ScheduleApptView: UIViewController {
     var EndDateString:String?
     var dFormatString = "MM/d/yyyy h:mm a"
     var cust:Customer?
+    var apptResp:AppointmentResponse?
     
     var CutTimeVar:String?
     var CutDateVar:String?
     var CutNameVar:String?
     var CutTypeID:Int?
+    var gameTimer: Timer!
+    var ApptCtrl: AppointmentController?
+    
+    @IBOutlet weak var CommentTV: KMPlaceholderTextView!
     
     
       
     @IBOutlet weak var CutType: UILabel!
     @IBOutlet weak var CutDate: UILabel!
     @IBOutlet weak var CutTime: UILabel!
+    
     
        
     @IBOutlet weak var DateTimeLabel: UILabel!
@@ -51,6 +63,44 @@ class ScheduleApptView: UIViewController {
         }
         
     }
+    
+    func triggerNotification(body:String){
+        
+        _ = ProcessInfo.processInfo.globallyUniqueString
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Scheduline Confirmation"
+        content.subtitle = "Appointment was scheduled successfully"
+        content.body = body
+        content.sound = UNNotificationSound.default()
+        
+        /*
+        if let attachment = UNNotificationAttachment.create(identifier: identifier, image: UIImage(named: "logo")!, options: nil) {
+            // where myImage is any UIImage that follows the
+            content.attachments = [attachment]
+        }
+         */
+        
+        // Deliver the notification in five seconds.
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(identifier:requestIdentifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error) in
+            
+            if (error != nil){
+                
+                print(error?.localizedDescription ?? "")
+            }
+        }
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        
+    }
+    
+    func runTimedCode() {
+        self.closeForm()
+    }
+
     
     
     func FormatDateTimeString() {
@@ -82,7 +132,7 @@ class ScheduleApptView: UIViewController {
     func customContentViewSizeAction() {
         let navigationController = self.formSheetControllerWithNavigationController()
         let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-        formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 300)
+        formSheetController.presentationController?.contentViewSize = CGSize(width:self.view.frame.width - 100, height:self.view.frame.height - 280)
         
         self.present(formSheetController, animated: true, completion: nil)
     }
@@ -99,8 +149,8 @@ class ScheduleApptView: UIViewController {
     private func Schedule(){
         
         let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/ScheduleAppointment"
-        var actions: [UIAlertAction] = [UIAlertAction]()
-        actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: closeHandler ))
+        let actions: [UIAlertAction] = [UIAlertAction]()
+        //actions.append(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: closeHandler ))
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dFormatString
@@ -108,9 +158,11 @@ class ScheduleApptView: UIViewController {
          _ = FormatDateTimeString()
         
         
+        
+        
         request.AppointmentType = CutTypeID
-        request.StartDateTime = StartDateString
-        request.EndDateTime = EndDateString
+        request.ApptDateTime = StartDateString
+        request.Duration = duration
         request.CustId = cust?.CustId
         
         let json = JSONSerializer.toJson(request)
@@ -126,7 +178,17 @@ class ScheduleApptView: UIViewController {
         
         let obj = RestAPI()
         obj.PostAPI(url, postData: apptPostData) { response in
-            Common.ShowAlert(self, Message: "Submitted successfully.", Actions: actions, Title: "")
+            self.apptResp = Mapper<AppointmentResponse>().map(JSONString: response.rawString()!)
+            if self.apptResp?.IsSussessful == true{
+                let body = "Your appointment on " + self.CutDateVar! + " at " + self.CutTimeVar! + " was scheduled successfully."
+                self.triggerNotification(body: body)
+                self.ApptCtrl?.GetAvailableSlots()
+                //self.closeForm()
+            }
+            else{
+                Common.ShowAlert(self, Message: "There was a problem with your request. Please try again later", Actions: actions, Title: "")
+            }
+            
         }
     }
     
@@ -134,8 +196,12 @@ class ScheduleApptView: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
+
         
         CutDate.text = CutDateVar
         CutTime.text = CutTimeVar
@@ -144,6 +210,8 @@ class ScheduleApptView: UIViewController {
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .plain, target: self, action: #selector(ScheduleApptView.closeForm))
         
         self.navigationItem.title = "Confirm Appointment"
+               //CommentTV.becomeFirstResponder()
+        //CommentTV.returnKeyType = UIReturnKeyType.done
         
         /*
         let formatter = DateFormatter()

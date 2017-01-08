@@ -30,22 +30,42 @@ class LoginViewController: FormViewController {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .plain, target: self, action: #selector(LoginViewController.closeForm))
 
         }
-
+        
+        //self.hideKeyboardWhenTappedAround()
+        
         form +++
-            Section(" ")
-                      
+            
+            Section(""){$0.tag = "Login"}
+            
             <<< AccountRow() {
                 $0.title = "Login:"
                 $0.placeholder = "Username"
                 $0.tag = "uname"
+                $0.add(rule: RuleRequired())
+                $0.validationOptions = .validatesOnChange
             }
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+                }
+
             
             <<< PasswordRow() {
                 $0.title = "Password:"
                 $0.placeholder = "Password"
                 $0.tag = "pword"
+                $0.add(rule: RuleRequired())
+                $0.validationOptions = .validatesOnChange
                 }
-        
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+                }
+            
+            
+            
             +++ Section()
             
             <<< ButtonRow() { (row: ButtonRow) -> Void in
@@ -61,12 +81,20 @@ class LoginViewController: FormViewController {
                 row.title = "I don't have an account"
                 }
                 .onCellSelection { [weak self] (cell, row) in
-                    self?.Dismiss()
+                    self?.performSegue(withIdentifier: "NewAccountSegue", sender: nil)
             }
         
+        form.allSections[0].tag = "Login"
         
-        // Do any additional setup after loading the view.
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let row = self.form.rowBy(tag: "uname") as! AccountRow
+        row.cell.textField.becomeFirstResponder()
+    }
+
     
     func Dismiss() {
         dismiss(animated: true, completion: nil)
@@ -80,6 +108,13 @@ class LoginViewController: FormViewController {
     
     func DoLogin(){
         
+        self.form.validate()
+        
+        if self.form.validate().count > 0 {
+            form.sectionBy(tag: "Login")?.header?.title =  "One or more fields is invalid"
+            form.sectionBy(tag: "Login")?.reload()
+            return
+        }
         
         let text = "Please wait..."
         self.showWaitOverlayWithText((text as NSString) as String)
@@ -113,6 +148,7 @@ class LoginViewController: FormViewController {
                 
                 if self.IsFirstItem{
                     self.ApptForm?.GetAppts()
+                    self.navigationItem.rightBarButtonItem?.title = "LogOut"
                     self.Dismiss()
                 }
                 else{
@@ -120,6 +156,14 @@ class LoginViewController: FormViewController {
                     self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
  
                 }
+                
+            }
+            else{
+                let row: AccountRow? = self.form.rowBy(tag: "uname")
+                row?.cell.titleLabel?.textColor = .red
+                let row1: PasswordRow? = self.form.rowBy(tag: "pword")
+                row1?.cell.titleLabel?.textColor = .red
+                self.form.allSections[1].footer?.title = "Login Error"
                 
             }
             

@@ -26,8 +26,17 @@ class UpcomingApptController: UITableViewController {
     var cust:Customer?
     var appts:[Appt]?
     
-    @IBAction func Login(_ sender: UIBarButtonItem) {
-        passDataToViewControllerAction()
+    func Login() {
+        if self.navigationItem.rightBarButtonItem?.title == "Login" {
+            passDataToViewControllerAction()
+        }
+        else{
+            self.cust = nil
+            MYWSCache.sharedInstance.setObject(self.cust as AnyObject, forKey: "Customer" as Any as AnyObject)
+            self.navigationItem.rightBarButtonItem?.title = "Login"
+            self.appts = nil
+            tableView.reloadData()
+        }
     }
     
     
@@ -38,16 +47,31 @@ class UpcomingApptController: UITableViewController {
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         GetAppts()
-        refreshControl.endRefreshing()
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .long
+        let now = NSDate()
+        let updateString = "Last Updated at " + df.string(from: now as Date)
+        self.refreshControl?.attributedTitle = NSAttributedString(string: updateString)
+        if (self.refreshControl?.isRefreshing)!
+        {
+            self.refreshControl?.endRefreshing()
+        }
+
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.title = "Appointments"
         cust = MYWSCache.sharedInstance["Customer" as AnyObject] as? Customer
         self.tableView.estimatedRowHeight = 280
         self.tableView.rowHeight = UITableViewAutomaticDimension
        self.refreshControl?.addTarget(self, action: #selector(UpcomingApptController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        let sendButton = UIBarButtonItem(title: "Login", style: UIBarButtonItemStyle.plain, target: self, action: #selector(UpcomingApptController.Login))
+        
+        self.navigationItem.setRightBarButton(sendButton, animated: true)
         
         if cust == nil{
             passDataToViewControllerAction()
@@ -93,7 +117,9 @@ class UpcomingApptController: UITableViewController {
     
     func GetAppts(){
         
+        self.appts?.removeAll()
         cust = MYWSCache.sharedInstance["Customer" as AnyObject] as? Customer
+        self.navigationItem.rightBarButtonItem?.title = "LogOut"
         
         if cust == nil{
             return
@@ -108,6 +134,14 @@ class UpcomingApptController: UITableViewController {
         let obj = RestAPI()
         obj.GetAPI(url) { response in
             self.appts = Mapper<Appt>().mapArray(JSONString: response.rawString()!)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            for a in self.appts!{
+                a.ApptDate = dateFormatter.date(from: a.StartTime!)
+            }
+            
+            self.appts = self.appts?.filter { $0.ApptDate! > Date() }
+
             self.tableView.reloadData()
             SwiftOverlays.removeAllBlockingOverlays()
         }
@@ -129,8 +163,23 @@ class UpcomingApptController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        var numOfSections: Int = 0
+        if appts != nil
+        {
+            self.tableView.separatorStyle = .singleLine
+            numOfSections                = 1
+            self.tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+            noDataLabel.text             = "You must log in to view appointment data."
+            noDataLabel.textColor        = UIColor.black
+            noDataLabel.textAlignment    = .center
+            self.tableView.backgroundView = noDataLabel
+            self.tableView.separatorStyle = .none
+        }
+        return numOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,6 +190,27 @@ class UpcomingApptController: UITableViewController {
         return 0
         
     }
+    
+    
+    func DeleteAppointmentById(ApptId: Int){
+        
+        let url = MYWSCache.sharedInstance["RootURL" as AnyObject] as! String +  "Appointment/DeleteAppointmentsByApptId?apptId=" + String(ApptId)
+        
+        let obj = RestAPI()
+        obj.GetAPI(url) { response in
+            self.GetAppts()
+        }
+
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DeleteAppointmentById(ApptId: appts![indexPath.row].ApptId!)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,9 +219,10 @@ class UpcomingApptController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let apptDate = dateFormatter.date(from: appts![indexPath.row].StartTime!)
+        let Enddate = apptDate?.add(minutes: appts![indexPath.row].Duration!)
         
         cell.ApptTime.text = apptDate?.ToString(format: "EEEE, MMMM dd yyyy")
-        cell.SlotTime.text = appts![indexPath.row].StartTimeString! + " - " + appts![indexPath.row].EndTimeString!
+        cell.SlotTime.text = apptDate!.TimeStringFromDate()  + " - " + Enddate!.TimeStringFromDate()
 
         // Configure the cell...
 

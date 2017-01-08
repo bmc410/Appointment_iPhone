@@ -12,5 +12,6 @@ target 'AppointmentHub' do
     pod 'SkyFloatingLabelTextField', git: "https://github.com/MLSDev/SkyFloatingLabelTextField.git", branch: "swift3"
     pod 'Eureka', '~> 2.0.0-beta.1'
     pod 'MZFormSheetPresentationController'
+    pod 'KMPlaceholderTextView', '~> 1.3.0'
 end
 

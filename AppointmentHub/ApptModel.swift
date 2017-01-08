@@ -21,6 +21,8 @@ class Appt: Mappable {
     var StartTimeString: String?
     var EndTimeString: String?
     var ApptDate: Date?
+    var Duration: Int?
+    var ApptId: Int?
     
     required init?(map: Map){
         
@@ -36,6 +38,9 @@ class Appt: Mappable {
         Phone <- map["Phone"]
         StartTimeString <- map["StartTimeString"]
         EndTimeString <- map["EndTimeString"]
+        Duration <- map["Duration"]
+        ApptId <- map["ApptId"]
+        
     }
 }
 

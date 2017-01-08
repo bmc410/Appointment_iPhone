@@ -27,6 +27,7 @@
 		021A553A1DDBF81E00251AEE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 021A55261DDBF81E00251AEE /* Info.plist */; };
 		021D17B51DDAABAF00C786F2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 021D17B41DDAABAF00C786F2 /* Podfile */; };
 		022378881DF64257007BF0F4 /* UpcomingApptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022378871DF64257007BF0F4 /* UpcomingApptController.swift */; };
+		0243F4291E229F4D00464494 /* RecurringAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F4281E229F4D00464494 /* RecurringAppointmentController.swift */; };
 		024DF32F1DE6130600651127 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF32E1DE6130600651127 /* RestAPI.swift */; };
 		024DF3311DE6169B00651127 /* ApptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DF3301DE6169B00651127 /* ApptModel.swift */; };
 		02A6BFC31DFA2CB500591D81 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */; };
@@ -38,7 +39,7 @@
 		02B40F311DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */; };
 		02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B40F2F1DD13B88001E3AE3 /* Extensions.swift */; };
 		02B67E511DF264E900C71443 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B67E501DF264E900C71443 /* AccountController.swift */; };
-		02B67E531DF2654500C71443 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B67E521DF2654500C71443 /* LoginController.swift */; };
+		02B7A0071E0D7F6900C277B0 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B7A0061E0D7F6900C277B0 /* CustomerModel.swift */; };
 		02B9C50D1DD0C6F600582041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C50C1DD0C6F600582041 /* AppDelegate.swift */; };
 		02B9C5141DD0C6F600582041 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9C5121DD0C6F600582041 /* Main.storyboard */; };
 		02B9C5161DD0C6F600582041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9C5151DD0C6F600582041 /* Assets.xcassets */; };
@@ -46,13 +47,16 @@
 		02B9C5211DD0D8B800582041 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5201DD0D8B800582041 /* CardView.swift */; };
 		02B9C5231DD0DA2400582041 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5221DD0DA2400582041 /* MainView.swift */; };
 		02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9C5251DD0DEF200582041 /* CutsModel.swift */; };
+		02BEA3D91DFE2A69000A7922 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEA3D81DFE2A69000A7922 /* InfoViewController.swift */; };
+		02CBD1031E0236B4003C2207 /* SlotsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBD1021E0236B4003C2207 /* SlotsRequest.swift */; };
+		02CBD1051E0238A3003C2207 /* SlotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBD1041E0238A3003C2207 /* SlotModel.swift */; };
 		02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */; };
 		02CEEBFA1DE25E7F006F4D5C /* ScheduleApptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */; };
-		02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167221DF32342007A9C6C /* LabeledTextField.swift */; };
-		02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */; };
+		02CF469E1E0D681F0080164E /* NewAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF469D1E0D681F0080164E /* NewAccountController.swift */; };
 		02D583A71DFA2DEA007DED04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D583A61DFA2DEA007DED04 /* LoginViewController.swift */; };
 		02D583AC1DFA2EF0007DED04 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D583AB1DFA2EF0007DED04 /* Helper.swift */; };
 		02F18AE81DFA43C200E1296A /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F18AE71DFA43C200E1296A /* LoginRequest.swift */; };
+		02F2F0C71DFF6D9900F890E8 /* AppointmentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2F0C61DFF6D9900F890E8 /* AppointmentResponse.swift */; };
 		02F838A41DE61C3D008D13D5 /* MYWSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A31DE61C3D008D13D5 /* MYWSCache.swift */; };
 		02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */; };
 		C4DEB91C1312DD6FCE1B45CF /* Pods_AppointmentHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB0D267B11E4181D797D0FC /* Pods_AppointmentHub.framework */; };
@@ -98,6 +102,7 @@
 		021A55261DDBF81E00251AEE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021D17B41DDAABAF00C786F2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		022378871DF64257007BF0F4 /* UpcomingApptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingApptController.swift; sourceTree = "<group>"; };
+		0243F4281E229F4D00464494 /* RecurringAppointmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurringAppointmentController.swift; sourceTree = "<group>"; };
 		024DF32E1DE6130600651127 /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		024DF3301DE6169B00651127 /* ApptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApptModel.swift; sourceTree = "<group>"; };
 		02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +114,7 @@
 		02B40F2E1DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		02B40F2F1DD13B88001E3AE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		02B67E501DF264E900C71443 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
-		02B67E521DF2654500C71443 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		02B7A0061E0D7F6900C277B0 /* CustomerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		02B9C5091DD0C6F600582041 /* AppointmentHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppointmentHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9C50C1DD0C6F600582041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9C5131DD0C6F600582041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,13 +124,16 @@
 		02B9C5201DD0D8B800582041 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		02B9C5221DD0DA2400582041 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		02B9C5251DD0DEF200582041 /* CutsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutsModel.swift; sourceTree = "<group>"; };
+		02BEA3D81DFE2A69000A7922 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		02CBD1021E0236B4003C2207 /* SlotsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotsRequest.swift; sourceTree = "<group>"; };
+		02CBD1041E0238A3003C2207 /* SlotModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotModel.swift; sourceTree = "<group>"; };
 		02CEEBF71DE25BAC006F4D5C /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleApptView.swift; sourceTree = "<group>"; };
-		02D167221DF32342007A9C6C /* LabeledTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
-		02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldController.swift; sourceTree = "<group>"; };
+		02CF469D1E0D681F0080164E /* NewAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountController.swift; sourceTree = "<group>"; };
 		02D583A61DFA2DEA007DED04 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		02D583AB1DFA2EF0007DED04 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		02F18AE71DFA43C200E1296A /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		02F2F0C61DFF6D9900F890E8 /* AppointmentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentResponse.swift; sourceTree = "<group>"; };
 		02F838A31DE61C3D008D13D5 /* MYWSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYWSCache.swift; sourceTree = "<group>"; };
 		02F838A91DE63BBA008D13D5 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOverlays.swift; sourceTree = "<group>"; };
 		4FD795FCDB934C0B6ACA960E /* Pods-AppointmentHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppointmentHub/Pods-AppointmentHub.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				02D583A61DFA2DEA007DED04 /* LoginViewController.swift */,
-				02B67E521DF2654500C71443 /* LoginController.swift */,
+				02CF469D1E0D681F0080164E /* NewAccountController.swift */,
 				02CEEBF91DE25E7F006F4D5C /* ScheduleApptView.swift */,
 				02B9C5221DD0DA2400582041 /* MainView.swift */,
 				02B40F2D1DD13B88001E3AE3 /* AppointmentsController.swift */,
@@ -210,6 +218,8 @@
 				02B67E501DF264E900C71443 /* AccountController.swift */,
 				022378871DF64257007BF0F4 /* UpcomingApptController.swift */,
 				02A6BFC21DFA2CB500591D81 /* HomeViewController.swift */,
+				02BEA3D81DFE2A69000A7922 /* InfoViewController.swift */,
+				0243F4281E229F4D00464494 /* RecurringAppointmentController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -219,8 +229,6 @@
 			children = (
 				02B9C5151DD0C6F600582041 /* Assets.xcassets */,
 				02D583AB1DFA2EF0007DED04 /* Helper.swift */,
-				02D167221DF32342007A9C6C /* LabeledTextField.swift */,
-				02D167231DF32342007A9C6C /* LabeledTextFieldController.swift */,
 				02B2A2DD1DD22AC900491B14 /* AKPickerView.swift */,
 				02B9C50C1DD0C6F600582041 /* AppDelegate.swift */,
 				02B9C51A1DD0C6F600582041 /* Info.plist */,
@@ -284,6 +292,10 @@
 				02AE68E21DE66C47002DB5D2 /* AppointmentRequest.swift */,
 				021202511DE8F8B100FE3574 /* ApptType.swift */,
 				02F18AE71DFA43C200E1296A /* LoginRequest.swift */,
+				02F2F0C61DFF6D9900F890E8 /* AppointmentResponse.swift */,
+				02CBD1021E0236B4003C2207 /* SlotsRequest.swift */,
+				02CBD1041E0238A3003C2207 /* SlotModel.swift */,
+				02B7A0061E0D7F6900C277B0 /* CustomerModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -434,10 +446,13 @@
 				02D583A71DFA2DEA007DED04 /* LoginViewController.swift in Sources */,
 				02F838AA1DE63BBA008D13D5 /* SwiftOverlays.swift in Sources */,
 				021A552C1DDBF81E00251AEE /* FSCalendarAppearance.m in Sources */,
+				02CBD1031E0236B4003C2207 /* SlotsRequest.swift in Sources */,
+				0243F4291E229F4D00464494 /* RecurringAppointmentController.swift in Sources */,
 				02B40F311DD13B88001E3AE3 /* CollapsibleTableViewHeader.swift in Sources */,
 				021A55351DDBF81E00251AEE /* FSCalendarScopeHandle.m in Sources */,
 				024DF32F1DE6130600651127 /* RestAPI.swift in Sources */,
 				02AE68E31DE66C47002DB5D2 /* AppointmentRequest.swift in Sources */,
+				02CF469E1E0D681F0080164E /* NewAccountController.swift in Sources */,
 				021A55311DDBF81E00251AEE /* FSCalendarConstants.m in Sources */,
 				021A55361DDBF81E00251AEE /* FSCalendarStickyHeader.m in Sources */,
 				021A552A1DDBF81E00251AEE /* FSCalendar+Deprecated.m in Sources */,
@@ -446,7 +461,7 @@
 				02B40F301DD13B88001E3AE3 /* AppointmentsController.swift in Sources */,
 				022378881DF64257007BF0F4 /* UpcomingApptController.swift in Sources */,
 				021A55291DDBF81E00251AEE /* FSCalendar.m in Sources */,
-				02B67E531DF2654500C71443 /* LoginController.swift in Sources */,
+				02F2F0C71DFF6D9900F890E8 /* AppointmentResponse.swift in Sources */,
 				02AE68E71DE67474002DB5D2 /* JSONSerializer.swift in Sources */,
 				021A55391DDBF81E00251AEE /* FSCalendar-dummy.m in Sources */,
 				02B2A2DE1DD22AC900491B14 /* AKPickerView.swift in Sources */,
@@ -465,15 +480,16 @@
 				02B9C50D1DD0C6F600582041 /* AppDelegate.swift in Sources */,
 				02B40F321DD13B88001E3AE3 /* Extensions.swift in Sources */,
 				021A55341DDBF81E00251AEE /* FSCalendarHeaderView.m in Sources */,
+				02BEA3D91DFE2A69000A7922 /* InfoViewController.swift in Sources */,
+				02CBD1051E0238A3003C2207 /* SlotModel.swift in Sources */,
 				02B9C5211DD0D8B800582041 /* CardView.swift in Sources */,
-				02D167241DF32342007A9C6C /* LabeledTextField.swift in Sources */,
 				021202521DE8F8B100FE3574 /* ApptType.swift in Sources */,
 				02A6BFC31DFA2CB500591D81 /* HomeViewController.swift in Sources */,
-				02D167251DF32342007A9C6C /* LabeledTextFieldController.swift in Sources */,
 				02B9C5261DD0DEF200582041 /* CutsModel.swift in Sources */,
 				02B9C5231DD0DA2400582041 /* MainView.swift in Sources */,
 				02CEEBF81DE25BAC006F4D5C /* TimeModel.swift in Sources */,
 				02F18AE81DFA43C200E1296A /* LoginRequest.swift in Sources */,
+				02B7A0071E0D7F6900C277B0 /* CustomerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
